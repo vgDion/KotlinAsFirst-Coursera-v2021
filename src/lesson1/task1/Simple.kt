@@ -65,8 +65,18 @@ fun main() {
  * Пользователь задает время в часах, минутах и секундах, например, 8:20:35.
  * Рассчитать время в секундах, прошедшее с начала суток (30035 в данном случае).
  */
-fun seconds(hours: Int, minutes: Int, seconds: Int): Int = ((hours * 3600) + (minutes * 60) + seconds)
+fun seconds(hours: Int, minutes: Int, seconds: Int): Int {
 
+    val ConvertHoursToSeconds: Int
+    val ConvertMinutesToSeconds: Int
+    val result: Int
+    ConvertHoursToSeconds = 3600
+    ConvertMinutesToSeconds = 60
+
+    result = hours * ConvertHoursToSeconds + minutes * ConvertMinutesToSeconds + seconds
+
+    return result
+}
 /**
  * Тривиальная (1 балл)
  *
@@ -107,7 +117,18 @@ fun thirdDigit(number: Int): Int = TODO()
  * прибыл на станцию назначения в h2 часов m2 минут того же дня (например в 13:01).
  * Определите время поезда в пути в минутах (в данном случае 216).
  */
-fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int = TODO()
+fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int): Int {
+    val ConvertHoursToMinutes: Int
+    val timeH1: Int
+    val timeH2: Int
+    val result: Int
+    ConvertHoursToMinutes = 60
+
+    timeH1 = minutesDepart + (ConvertHoursToMinutes * hoursDepart)
+    timeH2 = minutesArrive + (ConvertHoursToMinutes * hoursArrive)
+    result = timeH2 - timeH1
+    return result
+}
 
 /**
  * Простая (2 балла)
