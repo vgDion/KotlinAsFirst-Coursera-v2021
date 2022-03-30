@@ -2,6 +2,7 @@
 
 package lesson3.task1
 
+import lesson1.task1.sqr
 import kotlin.math.sqrt
 
 // Урок 3: циклы
@@ -80,7 +81,25 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int {
+    var i: Int
+    var fib1: Int
+    var fib2: Int
+    var fibSum: Int
+
+    i = 0
+    fib1 = 1
+    fib2 = 1
+
+    while (i < n-2){
+        fibSum = fib1 + fib2
+        fib1 = fib2
+        fib2 = fibSum
+        i += 1
+    }
+    return fib2
+
+}
 
 /**
  * Простая (2 балла)
@@ -192,7 +211,31 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var i: Int
+    var iSqr: Int
+    var num: Int
+
+    i = 1
+    var numbers: MutableList<Int> = mutableListOf()
+    var tmpNumbers: MutableList<Int> = mutableListOf()
+
+
+    while (numbers.size < n+1){
+        iSqr = sqr(i)
+        num = iSqr
+        i += 1
+        while (num != 0){
+            tmpNumbers.add(num % 10)
+            num = num / 10
+
+        }
+        tmpNumbers.reverse()
+        numbers.addAll(tmpNumbers)
+        tmpNumbers.clear()
+    }
+    return numbers[n-1]
+}
 
 /**
  * Сложная (5 баллов)
@@ -203,4 +246,32 @@ fun squareSequenceDigit(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun fibSequenceDigit(n: Int): Int = TODO()
+fun fibSequenceDigit(n: Int): Int {
+    var fib1: Int
+    var fib2: Int
+    var fibSum: Int
+    var num: Int
+
+    fib1 = 1
+    fib2 = 1
+    var numbers: MutableList<Int> = mutableListOf(1, 1)
+    var tmpNumbers: MutableList<Int> = mutableListOf()
+
+
+    while (numbers.size < n+1){
+        fibSum = fib1 + fib2
+        fib1 = fib2
+        fib2 = fibSum
+        num = fib2
+
+        while (num != 0){
+            tmpNumbers.add(num % 10)
+            num = num / 10
+
+        }
+        tmpNumbers.reverse()
+        numbers.addAll(tmpNumbers)
+        tmpNumbers.clear()
+    }
+    return numbers[n-1]
+}
